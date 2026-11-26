@@ -1,0 +1,822 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MRNMST Pty Ltd | Essential products & services</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', Roboto, system-ui, sans-serif;
+    }
+
+    body {
+      background-color: #FFD966; /* YELLOW dominant background */
+      color: #1e2b3a;
+      line-height: 1.5;
+    }
+
+    :root {
+      --yellow: #FFD966;
+      --blue: #1F4E8C;
+      --white: #FFFFFF;
+      --pink: #F9B4C6;
+      --soft-grey: #F5F7FA;
+      --dark-blue: #0F2D4F;
+    }
+
+    .container {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 0 1.5rem;
+    }
+
+    /* HEADER - white with yellow border */
+    header {
+      background-color: var(--white);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03);
+      padding: 0.8rem 0;
+      border-bottom: 4px solid var(--blue);
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+
+    .header-inner {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+    }
+
+    .logo-area {
+      display: flex;
+      align-items: center;
+      gap: 0.8rem;
+    }
+
+    .logo-area img {
+      max-height: 65px;
+      width: auto;
+      border-radius: 8px;
+      background: var(--white);
+      padding: 4px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    }
+
+    .logo-text-fallback {
+      display: none;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .logo-text-fallback i {
+      font-size: 2rem;
+      color: var(--blue);
+    }
+
+    .company-name {
+      font-size: 1.6rem;
+      font-weight: 700;
+      color: var(--blue);
+      letter-spacing: -0.5px;
+      line-height: 1.2;
+    }
+
+    .company-name span {
+      color: var(--pink);
+      font-weight: 600;
+    }
+
+    .tagline {
+      font-size: 0.85rem;
+      color: var(--blue);
+      font-weight: 600;
+      background: var(--yellow);
+      padding: 0.2rem 0.8rem;
+      border-radius: 20px;
+      display: inline-block;
+    }
+
+    .contact-mini {
+      display: flex;
+      gap: 1.2rem;
+      font-size: 0.9rem;
+      color: var(--dark-blue);
+      flex-wrap: wrap;
+      align-items: center;
+    }
+
+    .contact-mini a {
+      color: var(--dark-blue);
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      font-weight: 500;
+      transition: 0.2s;
+      border-bottom: 2px solid transparent;
+    }
+
+    .contact-mini a:hover {
+      color: var(--blue);
+      border-bottom-color: var(--pink);
+    }
+
+    .contact-mini i {
+      color: var(--blue);
+      font-size: 1rem;
+    }
+
+    /* HERO - white card on yellow bg */
+    .hero {
+      background-color: var(--white);
+      padding: 2rem 0 1.8rem;
+      border-radius: 40px;
+      margin: 1.8rem auto;
+      max-width: 1200px;
+      width: calc(100% - 2rem);
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.06);
+      border: 3px solid var(--blue);
+    }
+
+    .hero-content {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      padding: 0 1rem;
+    }
+
+    .hero h1 {
+      font-size: 2.6rem;
+      font-weight: 800;
+      color: var(--blue);
+      margin-bottom: 0.3rem;
+    }
+
+    .hero h1 i {
+      color: var(--pink);
+      margin-right: 0.3rem;
+    }
+
+    .hero p {
+      font-size: 1.2rem;
+      max-width: 800px;
+      color: #2b3e55;
+      margin-bottom: 1rem;
+      font-weight: 500;
+    }
+
+    .reg-badge {
+      background: var(--blue);
+      color: var(--white);
+      padding: 0.4rem 1.2rem;
+      border-radius: 30px;
+      font-size: 0.9rem;
+      font-weight: 500;
+      letter-spacing: 0.3px;
+      display: inline-block;
+      margin-bottom: 0.3rem;
+      border: 2px solid var(--yellow);
+    }
+
+    .reg-badge i {
+      color: var(--yellow);
+      margin-right: 0.4rem;
+    }
+
+    /* BUSINESS PROFILE SMALL SENTENCE */
+    .business-profile {
+      background-color: var(--pink);
+      color: var(--blue);
+      font-weight: 700;
+      font-size: 1.1rem;
+      padding: 0.7rem 1.5rem;
+      border-radius: 50px;
+      text-align: center;
+      max-width: 900px;
+      margin: 0.8rem auto 0;
+      border: 2px solid var(--white);
+      box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+    }
+
+    .business-profile i {
+      color: var(--blue);
+      margin-right: 0.5rem;
+    }
+
+    /* SECTION TITLE */
+    .section-title {
+      font-size: 2rem;
+      font-weight: 700;
+      color: var(--blue);
+      margin-bottom: 1.8rem;
+      position: relative;
+      display: inline-block;
+      padding-bottom: 0.5rem;
+      background: var(--white);
+      padding: 0.5rem 1.5rem;
+      border-radius: 50px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.03);
+    }
+
+    .section-title:after {
+      content: '';
+      position: absolute;
+      bottom: -6px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 80%;
+      height: 5px;
+      background: linear-gradient(90deg, var(--pink) 0%, var(--blue) 100%);
+      border-radius: 10px;
+    }
+
+    .section-title i {
+      color: var(--pink);
+      margin-right: 0.6rem;
+    }
+
+    /* SERVICES GRID */
+    .services {
+      padding: 2rem 0 1rem;
+    }
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
+      gap: 2.2rem;
+    }
+
+    .service-card {
+      background: var(--white);
+      border-radius: 32px;
+      padding: 1.5rem 1.5rem 1.8rem;
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.06);
+      border: 2px solid var(--blue);
+      transition: 0.25s ease;
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+    }
+
+    .service-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 20px 32px rgba(31, 78, 140, 0.12);
+      border-color: var(--pink);
+    }
+
+    .service-icon {
+      font-size: 2.4rem;
+      color: var(--blue);
+      margin-bottom: 0.5rem;
+    }
+
+    .service-card h3 {
+      font-size: 1.6rem;
+      color: var(--blue);
+      margin-bottom: 0.6rem;
+      font-weight: 700;
+      letter-spacing: -0.3px;
+    }
+
+    .service-card p {
+      color: #3f4e5e;
+      font-size: 1rem;
+      margin-bottom: 1.2rem;
+      flex: 1;
+    }
+
+    /* SLIDING PICTURE FRAME - DOTTED, BIGGER, ALMOST FULL WIDTH */
+    .slider-frame {
+      margin-top: 0.6rem;
+      border: 3px dotted var(--blue);
+      border-radius: 22px;
+      padding: 0.6rem;
+      background: var(--white);
+      box-shadow: inset 0 0 0 2px var(--yellow), 0 6px 14px rgba(0, 0, 0, 0.04);
+      transition: 0.2s;
+      position: relative;
+      overflow: hidden;
+      width: 100%;
+    }
+
+    .slider-frame .slide-container {
+      display: flex;
+      overflow-x: auto;
+      scroll-snap-type: x mandatory;
+      scroll-behavior: smooth;
+      gap: 12px;
+      border-radius: 16px;
+      -webkit-overflow-scrolling: touch;
+      scrollbar-width: thin;
+      scrollbar-color: var(--pink) var(--yellow);
+      padding-bottom: 6px;
+    }
+
+    .slider-frame .slide-container::-webkit-scrollbar {
+      height: 8px;
+    }
+
+    .slider-frame .slide-container::-webkit-scrollbar-track {
+      background: var(--yellow);
+      border-radius: 10px;
+    }
+
+    .slider-frame .slide-container::-webkit-scrollbar-thumb {
+      background: var(--pink);
+      border-radius: 10px;
+    }
+
+    .slide-item {
+      flex: 0 0 100%; /* almost whole screen width per block */
+      scroll-snap-align: start;
+      border-radius: 16px;
+      overflow: hidden;
+      background: var(--soft-grey);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: 1px solid rgba(31, 78, 140, 0.2);
+    }
+
+    .slide-item img {
+      width: 100%;
+      height: 240px; /* bigger images */
+      object-fit: cover;
+      display: block;
+      transition: 0.2s;
+    }
+
+    .slide-item .img-placeholder {
+      height: 240px;
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: var(--soft-grey);
+      color: var(--blue);
+      font-size: 1rem;
+      font-weight: 500;
+      text-align: center;
+      padding: 0.5rem;
+      flex-direction: column;
+      gap: 0.3rem;
+    }
+
+    .img-placeholder i {
+      font-size: 2.5rem;
+      color: var(--pink);
+    }
+
+    .slider-hint {
+      display: flex;
+      justify-content: center;
+      gap: 8px;
+      margin-top: 6px;
+      font-size: 0.75rem;
+      color: var(--blue);
+      opacity: 0.7;
+    }
+
+    /* INFO BLOCK */
+    .info-block {
+      background: var(--white);
+      border-radius: 40px;
+      padding: 2.5rem 2rem;
+      margin: 2.5rem 0 2rem;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 2rem;
+      align-items: center;
+      justify-content: space-between;
+      border: 3px solid var(--blue);
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.04);
+    }
+
+    .info-text {
+      flex: 1 1 280px;
+    }
+
+    .info-text p {
+      font-size: 1.05rem;
+      margin-bottom: 0.8rem;
+      color: #1e2b3a;
+    }
+
+    .info-text strong {
+      color: var(--blue);
+      font-weight: 700;
+    }
+
+    .director-card {
+      background: var(--white);
+      border-radius: 30px;
+      padding: 1.5rem 2rem;
+      box-shadow: 0 8px 18px rgba(0, 0, 0, 0.03);
+      border: 3px solid var(--pink);
+      text-align: center;
+      min-width: 220px;
+    }
+
+    .director-card i {
+      font-size: 2rem;
+      color: var(--blue);
+      background: var(--yellow);
+      padding: 0.8rem;
+      border-radius: 60px;
+      margin-bottom: 0.6rem;
+    }
+
+    .director-card h4 {
+      font-size: 1.4rem;
+      color: var(--blue);
+      font-weight: 700;
+    }
+
+    .director-card .title {
+      font-size: 0.9rem;
+      color: var(--pink);
+      font-weight: 600;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+      margin-top: 0.2rem;
+    }
+
+    /* FOOTER */
+    footer {
+      background: var(--blue);
+      color: var(--white);
+      padding: 2.5rem 0 1.8rem;
+      border-top: 8px solid var(--pink);
+      margin-top: 1rem;
+    }
+
+    .footer-inner {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 2rem;
+    }
+
+    .footer-col {
+      flex: 1 1 200px;
+    }
+
+    .footer-col h5 {
+      font-size: 1.1rem;
+      color: var(--yellow);
+      margin-bottom: 1rem;
+      font-weight: 600;
+      letter-spacing: 0.5px;
+    }
+
+    .footer-col p, .footer-col a {
+      color: #e0e9f5;
+      text-decoration: none;
+      font-size: 0.95rem;
+      line-height: 1.8;
+    }
+
+    .footer-col a:hover {
+      color: var(--pink);
+      text-decoration: underline;
+    }
+
+    .footer-col i {
+      color: var(--pink);
+      width: 1.6rem;
+    }
+
+    .footer-bottom {
+      margin-top: 2rem;
+      padding-top: 1.2rem;
+      border-top: 1px solid rgba(255, 255, 255, 0.15);
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      font-size: 0.85rem;
+      color: #b7c9e0;
+    }
+
+    /* RESPONSIVE */
+    @media (max-width: 800px) {
+      .services-grid {
+        grid-template-columns: 1fr;
+      }
+      .slide-item img {
+        height: 200px;
+      }
+      .slide-item .img-placeholder {
+        height: 200px;
+      }
+    }
+
+    @media (max-width: 700px) {
+      .header-inner {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+      .hero h1 {
+        font-size: 1.9rem;
+      }
+      .section-title {
+        font-size: 1.6rem;
+      }
+      .business-profile {
+        font-size: 0.95rem;
+      }
+      .info-block {
+        padding: 1.8rem;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .contact-mini {
+        flex-direction: column;
+        gap: 0.5rem;
+        align-items: flex-start;
+      }
+      .logo-area img {
+        max-height: 50px;
+      }
+      .company-name {
+        font-size: 1.3rem;
+      }
+      .hero {
+        padding: 1.5rem 0;
+      }
+      .slide-item img {
+        height: 160px;
+      }
+      .slide-item .img-placeholder {
+        height: 160px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- HEADER -->
+  <header>
+    <div class="container header-inner">
+      <div class="logo-area">
+        <img src="https://raw.githubusercontent.com/YOUR_GITHUB_USERNAME/YOUR_REPO/main/logor.jpg" alt="MRNMST logo" onerror="this.style.display='none'; this.parentNode.querySelector('.logo-text-fallback').style.display='flex';">
+        <div class="logo-text-fallback">
+          <i class="fas fa-building"></i>
+        </div>
+        <div>
+          <div class="company-name">MRNMST <span>PTY LTD</span></div>
+          <div class="tagline">Essential products & services</div>
+        </div>
+      </div>
+      <div class="contact-mini">
+        <a href="mailto:info@mrnmst.co.za"><i class="fas fa-envelope"></i> info@mrnmst.co.za</a>
+        <a href="tel:+27813665827"><i class="fas fa-phone-alt"></i> 081 366 5827</a>
+        <a href="#"><i class="fas fa-map-pin"></i> Makhado, Limpopo</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- HERO with business profile sentence -->
+  <section class="hero">
+    <div class="hero-content">
+      <div class="reg-badge">
+        <i class="fas fa-check-circle"></i> Reg No: 2026/795366/07
+      </div>
+      <h1><i class="fas fa-handshake"></i> MRNMST <span style="color: var(--pink);">Pty Ltd</span></h1>
+      <p>Essential products & services.</p>
+      <!-- Small business profile sentence -->
+      <div class="business-profile">
+        <i class="fas fa-briefcase"></i> Reliable local manufacturer & supplier.
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVICES with sliding picture blocks -->
+  <section class="services">
+    <div class="container">
+      <h2 class="section-title"><i class="fas fa-cogs"></i> What we do</h2>
+      <div class="services-grid">
+
+    <!-- EMBROIDERY -->
+<div class="service-card">
+  <div class="service-icon"><i class="fas fa-tshirt"></i></div>
+  <h3>Embroidery Services</h3>
+  <p>Custom embroidery for uniforms, corporate wear, and promotional items. Precise stitching and durable finishes for professional branding.</p>
+  <div class="slider-frame">
+    <div class="slide-container">
+      <div class="slide-item">
+        <img src="embroidery1.jpeg" alt="Embroidery work 1" onerror="this.style.display='none'; this.parentNode.querySelector('.img-placeholder').style.display='flex';">
+        <div class="img-placeholder" style="display: none;"><i class="fas fa-image"></i> embroidery1.jpeg</div>
+      </div>
+      <div class="slide-item">
+        <img src="embroidery2.jpeg" alt="Embroidery work 2" onerror="this.style.display='none'; this.parentNode.querySelector('.img-placeholder').style.display='flex';">
+        <div class="img-placeholder" style="display: none;"><i class="fas fa-image"></i> embroidery2.jpeg</div>
+      </div>
+      <div class="slide-item">
+        <img src="embroidery3.webp" alt="Embroidery work 3" onerror="this.style.display='none'; this.parentNode.querySelector('.img-placeholder').style.display='flex';">
+        <div class="img-placeholder" style="display: none;"><i class="fas fa-image"></i> embroidery3.webp</div>
+      </div>
+      <div class="slide-item">
+        <img src="embroidery4.png" alt="Embroidery work 4" onerror="this.style.display='none'; this.parentNode.querySelector('.img-placeholder').style.display='flex';">
+        <div class="img-placeholder" style="display: none;"><i class="fas fa-image"></i> embroidery4.png</div>
+      </div>
+    </div>
+    <div class="slider-hint"><i class="fas fa-arrow-left"></i> slide <i class="fas fa-arrow-right"></i></div>
+  </div>
+</div>
+<!-- PPE SUPPLY & BRANDING -->
+<div class="service-card">
+  <div class="service-icon"><i class="fas fa-hard-hat"></i></div>
+  <h3>PPE Branding & Supply</h3>
+  <p>Quality personal protective equipment with custom branding — safety wear, gloves, helmets, and high-visibility gear for any industry.</p>
+  <div class="slider-frame">
+    <div class="slide-container">
+      <div class="slide-item">
+        <img src="ppe1.jpg" alt="PPE branding 1" onerror="this.style.display='none'; this.parentNode.querySelector('.img-placeholder').style.display='flex';">
+        <div class="img-placeholder" style="display: none;"><i class="fas fa-image"></i> ppe1.jpg</div>
+      </div>
+      <div class="slide-item">
+        <img src="ppe2.webp" alt="PPE branding 2" onerror="this.style.display='none'; this.parentNode.querySelector('.img-placeholder').style.display='flex';">
+        <div class="img-placeholder" style="display: none;"><i class="fas fa-image"></i> ppe2.webp</div>
+      </div>
+      <div class="slide-item">
+        <img src="ppe2.jpg" alt="PPE branding 3" onerror="this.style.display='none'; this.parentNode.querySelector('.img-placeholder').style.display='flex';">
+        <div class="img-placeholder" style="display: none;"><i class="fas fa-image"></i> ppe2.jpg</div>
+      </div>
+      <div class="slide-item">
+        <img src="ppe3.jpg" alt="PPE branding 4" onerror="this.style.display='none'; this.parentNode.querySelector('.img-placeholder').style.display='flex';">
+        <div class="img-placeholder" style="display: none;"><i class="fas fa-image"></i> ppe3.jpg</div>
+      </div>
+    </div>
+    <div class="slider-hint"><i class="fas fa-arrow-left"></i> slide <i class="fas fa-arrow-right"></i></div>
+  </div>
+</div>
+<!-- STATIONERY SUPPLY -->
+<div class="service-card">
+  <div class="service-icon"><i class="fas fa-pen-fancy"></i></div>
+  <h3>Stationery Supply</h3>
+  <p>Bulk and retail stationery for offices, schools, and community projects. Reliable supply, competitive pricing, and quality brands.</p>
+  <div class="slider-frame">
+    <div class="slide-container">
+      <div class="slide-item">
+        <img src="stationery1.jpeg" alt="Stationery 1" onerror="this.style.display='none'; this.parentNode.querySelector('.img-placeholder').style.display='flex';">
+        <div class="img-placeholder" style="display: none;"><i class="fas fa-image"></i> stationery1.jpeg</div>
+      </div>
+      <div class="slide-item">
+        <img src="stationery2.png" alt="Stationery 2" onerror="this.style.display='none'; this.parentNode.querySelector('.img-placeholder').style.display='flex';">
+        <div class="img-placeholder" style="display: none;"><i class="fas fa-image"></i> stationery2.png</div>
+      </div>
+    </div>
+    <div class="slider-hint"><i class="fas fa-arrow-left"></i> slide <i class="fas fa-arrow-right"></i></div>
+  </div>
+</div>
+        <!-- ICE CUBES -->
+<div class="service-card">
+  <div class="service-icon"><i class="fas fa-cube"></i></div>
+  <h3>Ice Cube Production</h3>
+  <p>Clean, consistent ice cubes for local vendors, events, and businesses. Produced with high hygiene standards and reliable delivery.</p>
+  <div class="slider-frame">
+    <div class="slide-container">
+      <div class="slide-item">
+        <img src="icecube1.jpeg" alt="Ice cubes 1" onerror="this.style.display='none'; this.parentNode.querySelector('.img-placeholder').style.display='flex';">
+        <div class="img-placeholder" style="display: none;"><i class="fas fa-image"></i> icecube1.jpeg</div>
+      </div>
+      <div class="slide-item">
+        <img src="icecube2.jpeg" alt="Ice cubes 2" onerror="this.style.display='none'; this.parentNode.querySelector('.img-placeholder').style.display='flex';">
+        <div class="img-placeholder" style="display: none;"><i class="fas fa-image"></i> icecube2.jpeg</div>
+      </div>
+      <div class="slide-item">
+        <img src="icecube3.jpeg" alt="Ice cubes 3" onerror="this.style.display='none'; this.parentNode.querySelector('.img-placeholder').style.display='flex';">
+        <div class="img-placeholder" style="display: none;"><i class="fas fa-image"></i> icecube3.jpeg</div>
+      </div>
+    </div>
+    <div class="slider-hint"><i class="fas fa-arrow-left"></i> slide <i class="fas fa-arrow-right"></i></div>
+  </div>
+</div>
+        <!-- TOILET PAPER MANUFACTURING -->
+        <div class="service-card">
+          <div class="service-icon"><i class="fas fa-toilet-paper"></i></div>
+          <h3>Toilet Paper Manufacturing</h3>
+          <p>Local production of quality toilet paper — soft, durable, and affordable. Supplying households, businesses, and community organisations.</p>
+          <div class="slider-frame">
+            <div class="slide-container">
+              <div class="slide-item">
+                <img src="https://raw.githubusercontent.com/YOUR_GITHUB_USERNAME/YOUR_REPO/main/toiletpaper.jpg1" alt="Toilet paper 1" onerror="this.style.display='none'; this.parentNode.querySelector('.img-placeholder').style.display='flex';">
+                <div class="img-placeholder" style="display: none;"><i class="fas fa-image"></i> toiletpaper.jpg1</div>
+              </div>
+              <div class="slide-item">
+                <img src="https://raw.githubusercontent.com/YOUR_GITHUB_USERNAME/YOUR_REPO/main/toiletpaper.jpg2" alt="Toilet paper 2" onerror="this.style.display='none'; this.parentNode.querySelector('.img-placeholder').style.display='flex';">
+                <div class="img-placeholder" style="display: none;"><i class="fas fa-image"></i> toiletpaper.jpg2</div>
+              </div>
+              <div class="slide-item">
+                <img src="https://raw.githubusercontent.com/YOUR_GITHUB_USERNAME/YOUR_REPO/main/toiletpaper.jpg3" alt="Toilet paper 3" onerror="this.style.display='none'; this.parentNode.querySelector('.img-placeholder').style.display='flex';">
+                <div class="img-placeholder" style="display: none;"><i class="fas fa-image"></i> toiletpaper.jpg3</div>
+              </div>
+              <div class="slide-item">
+                <img src="https://raw.githubusercontent.com/YOUR_GITHUB_USERNAME/YOUR_REPO/main/toiletpaper.jpg4" alt="Toilet paper 4" onerror="this.style.display='none'; this.parentNode.querySelector('.img-placeholder').style.display='flex';">
+                <div class="img-placeholder" style="display: none;"><i class="fas fa-image"></i> toiletpaper.jpg4</div>
+              </div>
+            </div>
+            <div class="slider-hint"><i class="fas fa-arrow-left"></i> slide <i class="fas fa-arrow-right"></i></div>
+          </div>
+        </div>
+
+        <!-- WORKFORCE NUTRITION (added per description) -->
+        <div class="service-card">
+          <div class="service-icon"><i class="fas fa-utensils"></i></div>
+          <h3>Workforce Nutrition</h3>
+          <p>Instant porridge and energy-rich food supplies for mine, forestry, and outdoor workers. Boosts productivity and supports daily performance.</p>
+          <div class="slider-frame">
+            <div class="slide-container">
+              <div class="slide-item">
+                <img src="https://raw.githubusercontent.com/YOUR_GITHUB_USERNAME/YOUR_REPO/main/nutrition.jpg1" alt="Nutrition 1" onerror="this.style.display='none'; this.parentNode.querySelector('.img-placeholder').style.display='flex';">
+                <div class="img-placeholder" style="display: none;"><i class="fas fa-image"></i> nutrition1.jpeg</div>
+              </div>
+              <div class="slide-item">
+                <img src="https://raw.githubusercontent.com/YOUR_GITHUB_USERNAME/YOUR_REPO/main/nutrition.jpg2" alt="Nutrition 2" onerror="this.style.display='none'; this.parentNode.querySelector('.img-placeholder').style.display='flex';">
+                <div class="img-placeholder" style="display: none;"><i class="fas fa-image"></i> nutrition.jpeg</div>
+              </div>
+              <div class="slide-item">
+                <img src="https://raw.githubusercontent.com/YOUR_GITHUB_USERNAME/YOUR_REPO/main/nutrition.jpg3" alt="Nutrition 3" onerror="this.style.display='none'; this.parentNode.querySelector('.img-placeholder').style.display='flex';">
+                <div class="img-placeholder" style="display: none;"><i class="fas fa-image"></i> nutrition2.jpeg</div>
+              </div>
+              <div class="slide-item">
+                <img src="https://raw.githubusercontent.com/YOUR_GITHUB_USERNAME/YOUR_REPO/main/nutrition.jpg4" alt="Nutrition 4" onerror="this.style.display='none'; this.parentNode.querySelector('.img-placeholder').style.display='flex';">
+                <div class="img-placeholder" style="display: none;"><i class="fas fa-image"></i> nutrition.jpg4</div>
+              </div>
+            </div>
+            <div class="slider-hint"><i class="fas fa-arrow-left"></i> slide <i class="fas fa-arrow-right"></i></div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- DIRECTOR & COMPANY INFO -->
+  <div class="container">
+    <div class="info-block">
+      <div class="info-text">
+        <p><i class="fas fa-building" style="color: var(--blue); margin-right: 0.5rem;"></i> <strong>MRNMST Project and Infrastructure (PTY) LTD</strong> — trading as <strong>MRNMST (PTY) LTD</strong></p>
+        <p><i class="fas fa-map-marker-alt" style="color: var(--pink); margin-right: 0.5rem;"></i> <strong>Address:</strong> Makhado, Limpopo, South Africa</p>
+        <p><i class="fas fa-id-card" style="color: var(--blue); margin-right: 0.5rem;"></i> <strong>Reg No:</strong> 2026/795366/07</p>
+        <p><i class="fas fa-bullseye" style="color: var(--pink); margin-right: 0.5rem;"></i> <strong>Our goal:</strong> Create sustainable jobs, support local businesses, and deliver affordable, high-quality products to our clients.</p>
+      </div>
+      <div class="director-card">
+        <i class="fas fa-user-tie"></i>
+        <h4>Razi Mataz Nkambule</h4>
+        <div class="title">Director</div>
+        <p style="margin-top: 0.8rem; font-size: 0.85rem;"><i class="fas fa-phone" style="color: var(--blue);"></i> 081 366 5827</p>
+        <p style="font-size: 0.85rem;"><i class="fas fa-envelope" style="color: var(--blue);"></i> info@mrnmst.co.za</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="container">
+      <div class="footer-inner">
+        <div class="footer-col">
+          <h5>MRNMST (PTY) LTD</h5>
+          <p>Essential products & services for local communities. Embroidery, PPE, stationery, ice cubes, toilet paper, and workforce nutrition.</p>
+        </div>
+        <div class="footer-col">
+          <h5>Contact</h5>
+          <p><i class="fas fa-phone-alt"></i> 081 366 5827</p>
+          <p><i class="fas fa-envelope"></i> info@mrnmst.co.za</p>
+          <p><i class="fas fa-map-pin"></i> Makhado, Limpopo, South Africa</p>
+        </div>
+        <div class="footer-col">
+          <h5>Company</h5>
+          <p>Reg No: 2026/795366/07</p>
+          <p>Director: Razi Mataz Nkambule</p>
+          <p><i class="fas fa-check-circle" style="color: var(--yellow);"></i> Trading as MRNMST</p>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>© 2026 MRNMST Pty Ltd. All rights reserved.</span>
+        <span><i class="fas fa-heart" style="color: var(--pink);"></i> Building local, delivering quality</span>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    (function() {
+      const allImgs = document.querySelectorAll('.slide-item img');
+      allImgs.forEach(img => {
+        img.addEventListener('error', function() {
+          this.style.display = 'none';
+          const placeholder = this.parentNode.querySelector('.img-placeholder');
+          if (placeholder) placeholder.style.display = 'flex';
+        });
+      });
+    })();
+  </script>
+</body>
+</html>
